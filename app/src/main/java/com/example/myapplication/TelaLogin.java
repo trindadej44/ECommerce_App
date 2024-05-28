@@ -29,7 +29,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class TelaLogin extends AppCompatActivity {
 
-   
 
     EditText campoEmail, camposSenha; // Campos de entrada para email e senha
     Button botaoAcesso; // Botão de acesso
@@ -40,6 +39,16 @@ public class TelaLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // EdgeToEdge.enable(this); // Habilita layout de borda a borda
         setContentView(R.layout.activity_tela_login); // Define o layout da atividade
+
+        TextView textViewCadastro = findViewById(R.id.texto_tela_cadastro);
+        textViewCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Cria uma intent para abrir a tela de cadastro
+                Intent intent = new Intent(TelaLogin.this, TelaCadastro.class);
+                startActivity(intent);
+            }
+        });
 
         auth = ConfiguraBd.Fireautenticacao(); // Obtém a instância do FirebaseAuth
         inicializarComponente(); // Inicializa os componentes da interface
