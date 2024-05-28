@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1065840797875",
+    "project_id": "asdsdad-daebe",
+    "storage_bucket": "asdsdad-daebe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065840797875:android:f12fc2cb61a501b871a8c6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEeArpJmpSE17FEnAKE0G9i_7Nf9IMJAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

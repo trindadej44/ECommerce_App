@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".TelaLogin">
+
+
+
+    <ImageView
+        android:id="@+id/logo_android"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo_android"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></ImageView>
+
+
+    <TextView
+        android:id="@+id/text_login"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/logo_android"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        ></TextView>
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="20dp"
+        android:id="@+id/edit_email"
+        android:hint="Email"
+        android:drawableRight="@drawable/ic_email"
+        style="@style/editText"
+        app:layout_constraintTop_toBottomOf="@id/text_login"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+        app:layout_constraintStart_toStartOf="@id/text_login"
+        ></EditText>
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/edit_senha"
+        android:inputType="textPassword"
+        android:hint="Senha"
+        android:drawableRight="@drawable/ic_eye"
+        style="@style/editText"
+        app:layout_constraintTop_toBottomOf="@id/edit_email"
+        app:layout_constraintEnd_toEndOf="@id/edit_email"
+        app:layout_constraintStart_toStartOf="@id/edit_email"
+        ></EditText>
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_button"
+        style="@style/button"
+        android:layout_marginTop="50dp"
+        android:maxLength="25"
+        android:onClick="validarAutenticacao"
+        android:text="Entrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/edit_senha"></androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:id="@+id/texto_tela_cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        app:layout_constraintTop_toBottomOf="@id/login_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="17sp"
+        android:text="OU CRIE UMA CONTA AQUI"
+        ></TextView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
