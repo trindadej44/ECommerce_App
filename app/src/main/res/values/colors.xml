@@ -2,9 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Orange">#FB453B</color>
+    <color name="Orange">#E37C00</color>
     <color name="Pink">#1A16FF</color>
     <color name="Pink_light">#F899B9</color>
     <color name="roxo">#515EC1</color>
     <color name="grey">#5A5F7F</color>
+
+    <color name="dark_gray">#444444</color>
+    <color name="gray">#CCCCCC</color>
 </resources>
