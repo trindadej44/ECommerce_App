@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import android.app.Application;
 
+import com.example.myapplication.ProdutoServicoAdapter;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyApplication extends Application {
 
@@ -13,7 +16,7 @@ public class MyApplication extends Application {
         super.onCreate();
 
         // Inicializa o adapter aqui
-        produtoServicoAdapter = new ProdutoServicoAdapter(this, new ArrayList<>());
+        produtoServicoAdapter = new ProdutoServicoAdapter(this, new ArrayList<>(), null); // Passa null como OnItemClickListener
     }
 
     public ProdutoServicoAdapter getProdutoServicoAdapter() {

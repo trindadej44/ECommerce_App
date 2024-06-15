@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 public class ProdutoServico {
-
     private String nome;
     private String descricao;
     private double preco;

@@ -1,65 +1,59 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
+import com.example.myapplication.CarrinhoManager;
+import com.example.myapplication.ItemCarrinho;
+import com.example.myapplication.R;
 import java.util.List;
 
 public class CarrinhoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewCarrinho;
-    private CarrinhoAdapter carrinhoAdapter;
-    private List<ItemCarrinho> listaItensCarrinho;
+    private TextView textMensagemCompra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho);
 
-        // Inicializa a lista de itens do carrinho
-        listaItensCarrinho = new ArrayList<>();
-
-        // Configura RecyclerView
         recyclerViewCarrinho = findViewById(R.id.recyclerViewCarrinho);
-        recyclerViewCarrinho.setHasFixedSize(true);
+        textMensagemCompra = findViewById(R.id.textMensagemCompra);
+
+        mostrarItensCarrinho();
+    }
+
+    private void mostrarItensCarrinho() {
+        List<ItemCarrinho> itensCarrinho = CarrinhoManager.getItensCarrinho();
+
+        CarrinhoAdapter carrinhoAdapter = new CarrinhoAdapter(this, itensCarrinho);
+        recyclerViewCarrinho.setAdapter(carrinhoAdapter);
         recyclerViewCarrinho.setLayoutManager(new LinearLayoutManager(this));
 
-        // Configura Adapter e lista de itens do carrinho
-        carrinhoAdapter = new CarrinhoAdapter(this, listaItensCarrinho);
-        recyclerViewCarrinho.setAdapter(carrinhoAdapter);
-
-        // Atualiza total do carrinho
-        atualizaTotalCarrinho();
-    }
-
-    // Adiciona um item ao carrinho
-    public void adicionarItemAoCarrinho(ProdutoServico produto, int quantidade) {
-        ItemCarrinho itemCarrinho = new ItemCarrinho(produto, quantidade);
-        listaItensCarrinho.add(itemCarrinho);
-        carrinhoAdapter.notifyDataSetChanged();
-
-        // Atualiza o total do carrinho
-        atualizaTotalCarrinho();
-    }
-
-    // Método para atualizar o total do carrinho
-    private void atualizaTotalCarrinho() {
-        double total = calcularTotalCarrinho();
-        TextView textTotalCarrinho = findViewById(R.id.textTotalCarrinho);
-        textTotalCarrinho.setText("Total: R$ " + total);
-    }
-
-    // Método para calcular o total do carrinho
-    private double calcularTotalCarrinho() {
-        double total = 0;
-        for (ItemCarrinho item : listaItensCarrinho) {
-            total += item.getProduto().getPreco() * item.getQuantidade();
+        // Exibir a mensagem de compra finalizada
+        if (CarrinhoManager.isCompraFinalizada()) {
+            textMensagemCompra.setVisibility(View.VISIBLE);
+            textMensagemCompra.setText("Compra finalizada! Obrigado pela sua compra!");
+        } else {
+            textMensagemCompra.setVisibility(View.GONE);
         }
-        return total;
+    }
+
+    // Método para finalizar a compra
+    public void finalizarCompra(View view) {
+        CarrinhoManager.finalizarCompra();
+        CarrinhoManager.limparCarrinho();
+
+        // Exibe a mensagem de compra finalizada
+        textMensagemCompra.setVisibility(View.VISIBLE);
+        textMensagemCompra.setText("Compra finalizada! Obrigado pela sua compra!");
+
+        // Atualiza o RecyclerView após a compra
+        mostrarItensCarrinho();
     }
 }

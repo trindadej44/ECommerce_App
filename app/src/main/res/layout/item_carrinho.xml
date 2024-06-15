@@ -3,29 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:elevation="2dp"
+    android:layout_margin="4dp">
 
     <TextView
         android:id="@+id/textNomeProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome do Produto"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/gray" />
 
     <TextView
         android:id="@+id/textQuantidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quantidade: 1"
-        android:textSize="14sp" />
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray" />
 
     <TextView
-        android:id="@+id/textPreco"
+        android:id="@+id/textPrecoTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="R$ 99,99"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
         android:textStyle="bold" />
 
 </LinearLayout>

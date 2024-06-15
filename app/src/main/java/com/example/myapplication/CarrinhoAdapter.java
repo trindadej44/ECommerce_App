@@ -5,20 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.myapplication.ItemCarrinho;
+import com.example.myapplication.R;
 import java.util.List;
 
 public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.CarrinhoViewHolder> {
 
     private Context mContext;
-    private List<ItemCarrinho> mListaItensCarrinho;
+    private List<ItemCarrinho> mItensCarrinho;
 
-    public CarrinhoAdapter(Context context, List<ItemCarrinho> listaItensCarrinho) {
+    public CarrinhoAdapter(Context context, List<ItemCarrinho> itensCarrinho) {
         mContext = context;
-        mListaItensCarrinho = listaItensCarrinho;
+        mItensCarrinho = itensCarrinho;
     }
 
     @NonNull
@@ -30,26 +30,26 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.Carrin
 
     @Override
     public void onBindViewHolder(@NonNull CarrinhoViewHolder holder, int position) {
-        ItemCarrinho itemCarrinho = mListaItensCarrinho.get(position);
-        holder.textNomeProduto.setText(itemCarrinho.getProduto().getNome());
-        holder.textQuantidade.setText("Quantidade: " + itemCarrinho.getQuantidade());
-        holder.textPreco.setText("R$ " + itemCarrinho.getProduto().getPreco());
+        ItemCarrinho item = mItensCarrinho.get(position);
+        holder.textNomeProduto.setText(item.getProduto().getNome());
+        holder.textQuantidade.setText("Quantidade: " + item.getQuantidade());
+        holder.textPrecoTotal.setText("Total: R$ " + (item.getQuantidade() * item.getProduto().getPreco()));
     }
 
     @Override
     public int getItemCount() {
-        return mListaItensCarrinho.size();
+        return mItensCarrinho.size();
     }
 
     public static class CarrinhoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textNomeProduto, textQuantidade, textPreco;
+        TextView textNomeProduto, textQuantidade, textPrecoTotal;
 
         public CarrinhoViewHolder(@NonNull View itemView) {
             super(itemView);
             textNomeProduto = itemView.findViewById(R.id.textNomeProduto);
             textQuantidade = itemView.findViewById(R.id.textQuantidade);
-            textPreco = itemView.findViewById(R.id.textPreco);
+            textPrecoTotal = itemView.findViewById(R.id.textPrecoTotal);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 public class ItemCarrinho {
-
     private ProdutoServico produto;
     private int quantidade;
 
@@ -12,10 +11,6 @@ public class ItemCarrinho {
 
     public ProdutoServico getProduto() {
         return produto;
-    }
-
-    public void setProduto(ProdutoServico produto) {
-        this.produto = produto;
     }
 
     public int getQuantidade() {

@@ -4,31 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +18,17 @@ public class ProdutoServicoAdapter extends RecyclerView.Adapter<ProdutoServicoAd
     private Context mContext;
     private List<ProdutoServico> mListaProdutos;
     private List<ProdutoServico> mListaProdutosFiltrados;
+    private OnItemClickListener mListener;
 
-    public ProdutoServicoAdapter(Context context, List<ProdutoServico> listaProdutos) {
+    public interface OnItemClickListener {
+        void onAdicionarCarrinhoClick(ProdutoServico produto, int quantidade);
+    }
+
+    public ProdutoServicoAdapter(Context context, List<ProdutoServico> listaProdutos, OnItemClickListener listener) {
         mContext = context;
         mListaProdutos = listaProdutos;
-        mListaProdutosFiltrados = listaProdutos;
+        mListaProdutosFiltrados = new ArrayList<>(mListaProdutos); // Inicializa com uma cópia da lista original
+        mListener = listener;
     }
 
     @NonNull
@@ -58,6 +45,13 @@ public class ProdutoServicoAdapter extends RecyclerView.Adapter<ProdutoServicoAd
         holder.textDescricaoProduto.setText(produtoServico.getDescricao());
         holder.textPrecoProduto.setText("R$ " + String.valueOf(produtoServico.getPreco()));
         holder.imageProduto.setImageResource(produtoServico.getImagem());
+
+        holder.btnAdicionarCarrinho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onAdicionarCarrinhoClick(produtoServico, 1);
+            }
+        });
     }
 
     @Override
@@ -69,6 +63,7 @@ public class ProdutoServicoAdapter extends RecyclerView.Adapter<ProdutoServicoAd
 
         ImageView imageProduto;
         TextView textNomeProduto, textDescricaoProduto, textPrecoProduto;
+        TextView btnAdicionarCarrinho;
 
         public ProdutoServicoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +71,7 @@ public class ProdutoServicoAdapter extends RecyclerView.Adapter<ProdutoServicoAd
             textNomeProduto = itemView.findViewById(R.id.textNomeProduto);
             textDescricaoProduto = itemView.findViewById(R.id.textDescricaoProduto);
             textPrecoProduto = itemView.findViewById(R.id.textPrecoProduto);
+            btnAdicionarCarrinho = itemView.findViewById(R.id.btnAdicionarCarrinho);
         }
     }
 
@@ -86,7 +82,7 @@ public class ProdutoServicoAdapter extends RecyclerView.Adapter<ProdutoServicoAd
             protected FilterResults performFiltering(CharSequence constraint) {
                 String charString = constraint.toString().toLowerCase().trim();
                 if (charString.isEmpty()) {
-                    mListaProdutosFiltrados = mListaProdutos;
+                    mListaProdutosFiltrados = new ArrayList<>(mListaProdutos); // Retorna a lista completa se o filtro estiver vazio
                 } else {
                     List<ProdutoServico> filteredList = new ArrayList<>();
                     for (ProdutoServico produto : mListaProdutos) {
