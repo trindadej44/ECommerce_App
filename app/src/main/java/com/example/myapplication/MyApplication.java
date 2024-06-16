@@ -9,17 +9,17 @@ import java.util.List;
 
 public class MyApplication extends Application {
 
-    private ProdutoServicoAdapter produtoServicoAdapter;
+    private ProdutoServicoAdapter produtoServicoAdapter; // Declaração do objeto ProdutoServicoAdapter
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         // Inicializa o adapter aqui
-        produtoServicoAdapter = new ProdutoServicoAdapter(this, new ArrayList<>(), null); // Passa null como OnItemClickListener
+        produtoServicoAdapter = new ProdutoServicoAdapter(this, new ArrayList<>(), null); // Inicializa o ProdutoServicoAdapter com contexto, lista vazia e null como OnItemClickListener
     }
 
     public ProdutoServicoAdapter getProdutoServicoAdapter() {
-        return produtoServicoAdapter;
+        return produtoServicoAdapter; // Retorna o objeto ProdutoServicoAdapter
     }
 }

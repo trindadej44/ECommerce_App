@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        ></ImageView>
+        />
 
     <TextView
         android:id="@+id/text_cadastro"
@@ -30,7 +30,7 @@
         android:text="CADASTRE-SE"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        ></TextView>
+        />
 
     <EditText
         android:inputType="textPersonName"
@@ -42,7 +42,19 @@
         app:layout_constraintTop_toBottomOf="@id/edit_email"
         app:layout_constraintEnd_toEndOf="@id/edit_email"
         app:layout_constraintStart_toStartOf="@id/edit_email"
-        ></EditText>
+        />
+
+    <EditText
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:id="@+id/edit_numero"
+        android:hint="Telefone"
+        android:drawableRight="@android:drawable/ic_menu_call"
+        style="@style/editText"
+        app:layout_constraintTop_toBottomOf="@id/edit_nome"
+        app:layout_constraintEnd_toEndOf="@id/edit_nome"
+        app:layout_constraintStart_toStartOf="@id/edit_nome"
+        />
 
     <EditText
         android:inputType="textEmailAddress"
@@ -54,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_cadastro"
         app:layout_constraintEnd_toEndOf="@id/text_cadastro"
         app:layout_constraintStart_toStartOf="@id/text_cadastro"
-        ></EditText>
+        />
 
     <EditText
         android:layout_marginTop="10dp"
@@ -63,10 +75,10 @@
         android:hint="Senha"
         android:drawableRight="@drawable/ic_eye"
         style="@style/editText"
-        app:layout_constraintTop_toBottomOf="@id/edit_nome"
+        app:layout_constraintTop_toBottomOf="@id/edit_numero"
         app:layout_constraintEnd_toEndOf="@id/edit_nome"
         app:layout_constraintStart_toStartOf="@id/edit_nome"
-        ></EditText>
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register_button"
@@ -78,6 +90,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        ></androidx.appcompat.widget.AppCompatButton>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
