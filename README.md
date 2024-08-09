@@ -2,10 +2,6 @@ Trabalho concluido durante o curso de Desenvolvimento de Sistemas do Senai Cimat
 
 # Introdução
 
-**Atenção!** A funcionalidade de “Esqueci a Senha” geralmente tem o email de recuperação enviado para a caixa de Spam, então por favor verifique caso for usar.
-
-Se ocorreu algum erro na hora do cadastro, provavelmente seu email já está associado a alguma conta, ou o sistema do Firebase está com problemas. Por favor, tente também usar contas Gmail, Hotmail ou com provedores reais, visto que houve problemas quando usei contas aleatórias como “asda@asdasd@asd.com”.
-
 O projeto **E-Shop** é um aplicativo móvel desenvolvido para plataforma Android utilizando Java e XML no Android Studio. Ele oferece uma plataforma de comércio eletrônico onde os usuários podem visualizar e comprar produtos e serviços. O aplicativo inclui funcionalidades de login seguro, cadastro de usuários, exibição de catálogo de produtos e serviços com filtros de pesquisa, adição de itens ao carrinho de compras e visualização de detalhes dos produtos. O design é moderno, com uma paleta de cores predominantemente roxa sobre um fundo preto, proporcionando uma experiência visual agradável e intuitiva para os usuários.
 
 ## Funcionalidades
